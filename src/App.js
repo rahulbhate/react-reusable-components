@@ -1,13 +1,15 @@
 import React from 'react';
-import './App.css';
 import './css/bootstrap.min.css';
+import './css/style.css';
+import data from '../src/data/data';
 import Accordian from '../src/components/Accordian/Accordian';
+import FormContainer from '../src/components/Form/FormContainer';
 
 function App() {
   return (
     <div className="container-fluid">
       <div>
-        <Accordian label="Offer Documents">
+        <Accordian label="Offer Documents" data={data}>
           <div>
             <p>
               Please read all parts of the PDS. You should assess whether the
@@ -17,7 +19,7 @@ function App() {
             </p>
           </div>
         </Accordian>
-        <Accordian label="Fund Performance Report" isOpen>
+        <Accordian label="Fund Performance Report" data={data}>
           <div>
             <p>
               The Fund offers an opportunity for investors to participate in a
@@ -31,12 +33,12 @@ function App() {
             </p>
           </div>
         </Accordian>
-        <Accordian label="Audited Reports">
+        <Accordian label="Audited Reports" data={data}>
           <div>
             <p>Click the links below to see the following documentation:</p>
           </div>
         </Accordian>
-        <Accordian label="Key features of the Fund">
+        <Accordian label="Key features of the Fund" data={data}>
           <div>
             <ul>
               <li>
@@ -60,6 +62,9 @@ function App() {
             </ul>
           </div>
         </Accordian>
+        <div>
+          <FormContainer />
+        </div>
       </div>
     </div>
   );
