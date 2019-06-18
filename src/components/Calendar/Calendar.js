@@ -6,7 +6,7 @@ const Calendar = () => {
   const [dateContext, setDateContext] = useState(moment);
 
   const weekDays = moment.weekdaysShort();
-  const months = moment.months();
+  const months = moment.monthsShort();
   const blanks = [];
 
   for (let i = 0; i < firstDayOfMonth(); i++) {
@@ -27,6 +27,18 @@ const Calendar = () => {
   };
   const currentDay = () => {
     return dateContext.format('d');
+  };
+  const setMonth = (month) => {
+    let monthNo = months.indexOf(month);
+    setDateContext(...setDateContext);
+  };
+  const nextMonth = () => {
+    let dateContext = moment(dateContext).add(1, 'month');
+    setDateContext(...dateContext);
+  };
+  const prevMonth = () => {
+    let dateContext = moment(dateContext).subtract(1, 'month');
+    setDateContext(...dateContext);
   };
   function firstDayOfMonth() {
     let dateContext1 = dateContext; // Days of the week 0..1...5...6
@@ -71,16 +83,21 @@ const Calendar = () => {
       <table className="calendar">
         <thead>
           <tr className="calendar-header">
-            <td colspan={5}>
+            <td colspan={2}>
               <Select
                 options={months}
                 value={months}
                 placeholder={'Select Month'}
               />
             </td>
-            <td colspan={6} className="label-year">
-              {month()} {year()}
+            <td colspan={1} className="label-month">
+              {month()}
             </td>
+            <td className="label-year" colspan={1}>
+              {year()}
+            </td>
+            <td onClick={prevMonth}>&#x2192;</td>
+            <td onClick={nextMonth}>&#x2190;</td>
           </tr>
         </thead>
         <tbody>
