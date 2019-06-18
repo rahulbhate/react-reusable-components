@@ -2,8 +2,11 @@ import React from 'react';
 import './css/bootstrap.min.css';
 import './css/style.css';
 import data from '../src/data/data';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import FormContainer from '../src/components/Form/FormContainer';
+import ScrollToTop from '../src/components/ScrollToTop/ScrollToTop';
+import Calendar from '../src/components/Calendar/Calendar';
 
 function App() {
   return (
@@ -64,8 +67,20 @@ function App() {
         </Accordian>
         <div>
           <FormContainer />
+          <Calendar />
+          <p>
+            The Fund offers an opportunity for investors to participate in a
+            managed investment scheme managed by an experienced investment team,
+            APSEC Funds Management Pty Ltd (Investment Manager, ABN 48 152 440
+            723, Corporate Authorised Representative (411859) of APSEC
+            Compliance & Administration Pty Ltd (ABN 30 142 148 409; AFSL
+            345443)). Equity Trustees Limited (ABN 46 004 031 298) is the
+            responsible entity of the Atlantic Pacific Australian Equity Fund
+            ARSN 158 861 155 and the holder of AFS Licence number 240975.
+          </p>
         </div>
       </div>
+      <ScrollToTop />
     </div>
   );
 }

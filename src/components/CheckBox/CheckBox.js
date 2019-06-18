@@ -9,7 +9,6 @@ const CheckBox = (props) => {
           return (
             <label key={option} className="checkbox-inline">
               <input
-                id={props.name}
                 name={props.name}
                 value={option}
                 type="checkbox"

@@ -4,7 +4,17 @@ const useForm = (callback) => {
   const [values, setValues] = useState({
     skills: [],
   });
-
+  const [genderOptions, SetGenderOptions] = useState([
+    'Male',
+    'Female',
+    'Others',
+  ]);
+  const [skillOptions, setSkillOptions] = useState([
+    'Programming',
+    'Development',
+    'Design',
+    'Testing',
+  ]);
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     callback();
@@ -33,16 +43,28 @@ const useForm = (callback) => {
       skills: newSelectionArray,
     }));
   };
+
+  const handleRadioBox = (event) => {
+    const selectedOption = event.target.title;
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      [event.target.name]: selectedOption,
+    }));
+  };
   const handleClearForm = (event) => {
     event.preventDefault();
-    alert('handleClearForm');
-    setValues({});
+    setValues({ value: '', skills: '' });
+    console.log(values);
   };
   return {
     handleChange,
     handleCheckBox,
     handleSubmit,
+    handleRadioBox,
     values,
+    genderOptions,
+    skillOptions,
     handleClearForm,
   };
 };

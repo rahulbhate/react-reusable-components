@@ -10,8 +10,8 @@ const AccordianSection = (props) => {
       <div style={{ cursor: 'pointer' }} onClick={onClickToggle}>
         {label}
         <div style={{ float: 'right' }}>
-          {!toggle && <span>&#9650;</span>}
-          {toggle && <span>&#9660;</span>}
+          {toggle && <span>&#9650;</span>}
+          {!toggle && <span>&#9660;</span>}
         </div>
       </div>
       {toggle && (

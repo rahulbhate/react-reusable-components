@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import CheckBox from '../CheckBox/CheckBox';
@@ -10,28 +10,20 @@ const FormContainer = () => {
   const {
     values,
     handleCheckBox,
+    genderOptions,
+    skillOptions,
     handleClearForm,
     handleChange,
+    handleRadioBox,
     handleSubmit,
   } = useForm(login);
-  const [genderOptions, SetGenderOptions] = useState([
-    'Male',
-    'Female',
-    'Others',
-  ]);
-  const [skillOptions, setSkillOptions] = useState([
-    'Programming',
-    'Development',
-    'Design',
-    'Testing',
-  ]);
 
   function login() {
     console.log(values);
   }
 
   return (
-    <form className="container-fluid" onSubmit={handleSubmit}>
+    <form className="container" onSubmit={handleSubmit}>
       <Input
         inputType={'text'}
         title={'Full Name'}
@@ -68,6 +60,42 @@ const FormContainer = () => {
         placeholder={'Enter your age'}
         onChange={handleChange}
       />
+      <Input
+        inputType={'date'}
+        title={'date'}
+        id={'date'}
+        name={'date'}
+        value={values.date}
+        placeholder={'Add Date'}
+        onChange={handleChange}
+      />
+      <Input
+        inputType={'file'}
+        title={'Choose File'}
+        id={'file'}
+        name={'file'}
+        value={values.file}
+        multiple
+        onChange={handleChange}
+      />
+      <label>Are You Australian Citizen?</label>
+      <Input
+        inputType={'radio'}
+        title={'YES'}
+        id={'citizen'}
+        name={'citizen'}
+        value={values.citizen}
+        onChange={handleRadioBox}
+      />
+
+      <Input
+        inputType={'radio'}
+        title={'NO'}
+        id={'citizen'}
+        name={'citizen'}
+        value={values.citizen}
+        onChange={handleRadioBox}
+      />
       <Select
         title={'Gender'}
         name={'gender'}
@@ -92,7 +120,6 @@ const FormContainer = () => {
         placeholder={'Describe your past experience and skills'}
       />
       <Button type={'primary'} title={'Login'} />
-      <Button type={'secondary'} title={'Clear'} action={handleClearForm} />
     </form>
   );
 };
