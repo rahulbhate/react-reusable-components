@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import FormContainer from '../src/components/Form/FormContainer';
 import ScrollToTop from '../src/components/ScrollToTop/ScrollToTop';
+import GoogleMaps from '../src/components/GoogleMaps/GoogleMaps';
 import Calendar from '../src/components/Calendar/Calendar';
 
 function App() {
@@ -80,7 +81,6 @@ function App() {
           </p>
         </div>
       </div>
-      <ScrollToTop />
     </div>
   );
 }

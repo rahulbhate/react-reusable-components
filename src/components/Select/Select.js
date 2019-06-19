@@ -10,6 +10,7 @@ const Select = (props) => {
         value={props.value}
         className="form-control"
         {...props}
+        onChange={props.handleChange}
       >
         <option value={props.placeholder} disabled selected>
           {props.placeholder}

@@ -1,118 +1,103 @@
 import React, { useState } from 'react';
-import moment from 'moment';
+import dateFns from 'date-fns';
 import './calendar.css';
-import Select from '../Select/Select';
 const Calendar = () => {
-  const [dateContext, setDateContext] = useState(moment);
-
-  const weekDays = moment.weekdaysShort();
-  const months = moment.monthsShort();
-  const blanks = [];
-
-  for (let i = 0; i < firstDayOfMonth(); i++) {
-    blanks.push(<td className="emptySlot"> {''}</td>);
-  }
-
-  const year = () => {
-    return dateContext.format('Y');
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  console.log(selectedDate);
+  const header = () => {
+    const dateFormat = 'MMMM YYYY';
+    return (
+      <div className="header row flex-middle">
+        <div className="column col-start">
+          <div className="icon" onClick={prevMonth}>
+            chevron_left
+          </div>
+        </div>
+        <div className="column col-center">
+          <span>{dateFns.format(currentDate, dateFormat)}</span>
+        </div>
+        <div className="column col-end">
+          <div className="icon" onClick={nextMonth}>
+            chevron_right
+          </div>
+        </div>
+      </div>
+    );
   };
-  const month = () => {
-    return dateContext.format('MMMM');
+  const days = () => {
+    const dateFormat = 'ddd';
+    const days = [];
+    let startDate = dateFns.startOfWeek(currentDate);
+    for (let i = 0; i < 7; i++) {
+      days.push(
+        <div className="column col-center" key={i}>
+          {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
+        </div>,
+      );
+    }
+    return <div className="days row">{days}</div>;
   };
-  const daysInMonth = () => {
-    return dateContext.daysInMonth();
-  };
-  const currentDate = () => {
-    return dateContext.get('date');
-  };
-  const currentDay = () => {
-    return dateContext.format('d');
-  };
-  const setMonth = (month) => {
-    let monthNo = months.indexOf(month);
-    setDateContext(...setDateContext);
+  const cells = () => {
+    const monthStart = dateFns.startOfMonth(currentDate);
+    const monthEnd = dateFns.endOfMonth(monthStart);
+    const startDate = dateFns.startOfWeek(monthStart);
+    const endDate = dateFns.endOfWeek(monthEnd);
+    const dateFormat = 'D';
+    const rows = [];
+    let days = [];
+    let day = startDate;
+    let formattedDate = '';
+    while (day <= endDate) {
+      for (let i = 0; i < 7; i++) {
+        formattedDate = dateFns.format(day, dateFormat);
+        const cloneDay = day;
+        days.push(
+          <div
+            className={`column cell ${
+              !dateFns.isSameMonth(day, monthStart)
+                ? 'disabled'
+                : dateFns.isSameDay(day, selectedDate)
+                ? 'selected'
+                : ''
+            }`}
+            key={day}
+            onClick={() => onDateClick(dateFns.parse(cloneDay))}
+          >
+            <span className="number">{formattedDate}</span>
+            <span className="bg">{formattedDate}</span>
+          </div>,
+        );
+        day = dateFns.addDays(day, 1);
+      }
+      rows.push(
+        <div className="row" key={day}>
+          {' '}
+          {days}{' '}
+        </div>,
+      );
+      days = [];
+    }
+    return <div className="body">{rows}</div>;
   };
   const nextMonth = () => {
-    let dateContext = moment(dateContext).add(1, 'month');
-    setDateContext(...dateContext);
+    setCurrentDate(dateFns.addMonths(currentDate, 1));
   };
   const prevMonth = () => {
-    let dateContext = moment(dateContext).subtract(1, 'month');
-    setDateContext(...dateContext);
+    setCurrentDate(dateFns.subMonths(currentDate, 1));
   };
-  function firstDayOfMonth() {
-    let dateContext1 = dateContext; // Days of the week 0..1...5...6
-    let firstDay = moment(dateContext1)
-      .startOf('month')
-      .format('d');
-    return firstDay;
-  }
-
-  let daysOfMonth = [];
-  for (let d = 1; d <= daysInMonth(); d++) {
-    let className = d === currentDay() ? 'current-day' : 'day';
-    daysOfMonth.push(
-      <td key={d} className={className}>
-        <span>{d}</span>
-      </td>,
-    );
-  }
-  var totalSlots = [...blanks, ...daysOfMonth];
-  let rows = [];
-  let cells = [];
-  totalSlots.forEach((row, i) => {
-    if (i % 7 !== 0) {
-      cells.push(row);
-    } else {
-      let insertRow = cells.slice();
-      rows.push(insertRow);
-      cells = [];
-      cells.push(row);
-    }
-    if (i === totalSlots.length - 1) {
-      let insertRow = cells.slice();
-      rows.push(insertRow);
-    }
-  });
-  let trElems = rows.map((d, i) => {
-    return <tr key={i}> {d}</tr>;
-  });
-
+  const onDateClick = (day) => {
+    setSelectedDate({
+      ...selectedDate,
+      [selectedDate]: day,
+    });
+    console.log(selectedDate);
+  };
   return (
-    <div className="calendar-container">
-      <table className="calendar">
-        <thead>
-          <tr className="calendar-header">
-            <td colspan={2}>
-              <Select
-                options={months}
-                value={months}
-                placeholder={'Select Month'}
-              />
-            </td>
-            <td colspan={1} className="label-month">
-              {month()}
-            </td>
-            <td className="label-year" colspan={1}>
-              {year()}
-            </td>
-            <td onClick={prevMonth}>&#x2192;</td>
-            <td onClick={nextMonth}>&#x2190;</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            {weekDays.map((day, index) => {
-              return (
-                <td key={index} className="week-day">
-                  {day}
-                </td>
-              );
-            })}
-          </tr>
-          {trElems}
-        </tbody>
-      </table>
+    <div className="calendar">
+      <div>{header()}</div>
+      <div>{days()}</div>
+      <div>{cells()}</div>
     </div>
   );
 };
