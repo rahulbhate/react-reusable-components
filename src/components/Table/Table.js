@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useTable from './useTable';
 const Table = () => {
-  const { students, renderHeader, renderTableData } = useTable(login);
+  const { students, getHeader, getRowsData, renderTableData } = useTable(login);
 
   function login() {
     console.log(students);
@@ -10,8 +10,9 @@ const Table = () => {
   return (
     <div>
       <table className="table">
-        <tr>{renderHeader()}</tr>
+        <tr>{getHeader()}</tr>
         <tr>{renderTableData()}</tr>
+        <tbody>{getRowsData()}</tbody>
       </table>
     </div>
   );
