@@ -4,7 +4,7 @@ import './calendar.css';
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-  console.log(selectedDate);
+  console.log(currentDate);
   const header = () => {
     const dateFormat = 'MMMM YYYY';
     return (
@@ -87,11 +87,7 @@ const Calendar = () => {
     setCurrentDate(dateFns.subMonths(currentDate, 1));
   };
   const onDateClick = (day) => {
-    setSelectedDate({
-      ...selectedDate,
-      [selectedDate]: day,
-    });
-    console.log(selectedDate);
+    setSelectedDate(day);
   };
   return (
     <div className="calendar">

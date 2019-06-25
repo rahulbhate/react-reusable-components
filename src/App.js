@@ -6,12 +6,24 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import FormContainer from '../src/components/Form/FormContainer';
 import ScrollToTop from '../src/components/ScrollToTop/ScrollToTop';
-import GoogleMaps from '../src/components/GoogleMaps/GoogleMaps';
+import WrappedMap from '../src/components/WrappedMap/WrappedMap';
 import Calendar from '../src/components/Calendar/Calendar';
+import Navigation from '../src/components/Navigation/Navigation';
+import Table from '../src/components/Table/Table';
 
 function App() {
   return (
     <div className="container-fluid">
+      {/* 
+      <div style={{ width: '100vh', height: '100vh' }}>
+        <WrappedMap
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCM4LPDseLxG7wlucJxgiMuKUSNnOlxCwE"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
+     */}
       <div>
         <Accordian label="Offer Documents" data={data}>
           <div>
@@ -79,6 +91,7 @@ function App() {
             responsible entity of the Atlantic Pacific Australian Equity Fund
             ARSN 158 861 155 and the holder of AFS Licence number 240975.
           </p>
+          <Table />
         </div>
       </div>
     </div>

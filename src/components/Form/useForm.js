@@ -3,6 +3,7 @@ import { useState } from 'react';
 const useForm = (callback) => {
   const [values, setValues] = useState({
     skills: [],
+    file: [],
   });
   const [genderOptions, SetGenderOptions] = useState([
     'Male',
