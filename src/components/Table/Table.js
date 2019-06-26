@@ -1,7 +1,15 @@
 import React from 'react';
 import useTable from './useTable';
 const Table = () => {
-  const { students, getHeader, getRowsData, renderTableData } = useTable(login);
+  const {
+    posts,
+    currentPage,
+    postsPerPage,
+    students,
+    getHeader,
+    getRowsData,
+    renderTableData,
+  } = useTable(login);
 
   function login() {
     console.log(students);
@@ -14,6 +22,9 @@ const Table = () => {
         <tr>{renderTableData()}</tr>
         <tbody>{getRowsData()}</tbody>
       </table>
+      <h1>
+        Current Page: {currentPage} Records Per Page{postsPerPage}
+      </h1>
     </div>
   );
 };
