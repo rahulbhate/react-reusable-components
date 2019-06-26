@@ -7,8 +7,11 @@ const useTable = (callback) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-  console.log(posts);
-  console.log(Object.keys(posts[0]));
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  console.log(currentPosts);
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
@@ -19,12 +22,6 @@ const useTable = (callback) => {
     fetchPosts();
   }, []);
 
-  function renderTableData() {
-    var keys = getKeys();
-    return keys.map((key, index) => {
-      return <td key={posts[key]}>{posts[key]}</td>;
-    });
-  }
   const RenderRow = (props) => {
     return props.keys.map((key, index) => {
       return <td key={props.data[key]}>{props.data[key]}</td>;
@@ -52,7 +49,6 @@ const useTable = (callback) => {
   }
 
   return {
-    renderTableData,
     getHeader,
     getRowsData,
     posts,

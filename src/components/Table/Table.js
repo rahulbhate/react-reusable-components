@@ -1,25 +1,18 @@
 import React from 'react';
 import useTable from './useTable';
 const Table = () => {
-  const {
-    posts,
-    currentPage,
-    postsPerPage,
-    students,
-    getHeader,
-    getRowsData,
-    renderTableData,
-  } = useTable(login);
+  const { posts, currentPage, postsPerPage, getHeader, getRowsData } = useTable(
+    login,
+  );
 
   function login() {
-    console.log(students);
+    console.log(posts);
   }
 
   return (
     <div>
-      <table className="table">
+      <table className="table table-hover">
         <tr>{getHeader()}</tr>
-        <tr>{renderTableData()}</tr>
         <tbody>{getRowsData()}</tbody>
       </table>
       <h1>
