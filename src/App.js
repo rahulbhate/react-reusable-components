@@ -4,7 +4,7 @@ import './css/style.css';
 import data from '../src/data/data';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
-import FormContainer from '../src/components/Form/FormContainer';
+import Form from './components/Form/Form';
 import ScrollToTop from '../src/components/ScrollToTop/ScrollToTop';
 import WrappedMap from '../src/components/WrappedMap/WrappedMap';
 import Calendar from '../src/components/Calendar/Calendar';
@@ -79,7 +79,7 @@ function App() {
           </div>
         </Accordian>
         <div>
-          <FormContainer />
+          <Form />
           <Calendar />
           <p>
             The Fund offers an opportunity for investors to participate in a

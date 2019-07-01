@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import Select from '../Select/Select';
 import useForm from './useForm';
 
-const FormContainer = () => {
+const Form = () => {
   const {
     values,
     handleCheckBox,
@@ -124,4 +124,4 @@ const FormContainer = () => {
   );
 };
 
-export default FormContainer;
+export default Form;

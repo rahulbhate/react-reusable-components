@@ -8,6 +8,7 @@ const useTable = (callback) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
 
+  //Get current posts...
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -22,38 +23,11 @@ const useTable = (callback) => {
     fetchPosts();
   }, []);
 
-  const RenderRow = (props) => {
-    return props.keys.map((key, index) => {
-      return <td key={props.data[key]}>{props.data[key]}</td>;
-    });
-  };
-
-  function getRowsData() {
-    var keys = getKeys();
-    return posts.map((row, index) => {
-      return (
-        <tr key={index}>
-          <RenderRow key={index} data={row} keys={keys} />
-        </tr>
-      );
-    });
-  }
-  function getKeys() {
-    return Object.keys(posts[0]);
-  }
-  function getHeader() {
-    var keys = getKeys();
-    return keys.map((key, index) => {
-      return <th key={key}>{key.toUpperCase()}</th>;
-    }); /// Prints all Keys...
-  }
-
   return {
-    getHeader,
-    getRowsData,
     posts,
     currentPage,
     postsPerPage,
+    currentPosts,
   };
 };
 export default useTable;
