@@ -9,6 +9,7 @@ const Table = (props) => {
     currentPage,
     postsPerPage,
     paginate,
+    paginatePosts,
   } = useTable();
 
   const RenderRow = (props) => {
@@ -36,10 +37,7 @@ const Table = (props) => {
       return <th key={key}>{key.toUpperCase()}</th>;
     }); /// Prints all Keys...
   }
-  const paginatePosts = (pageNumber) => {
-    // setCurrentpage(currentPage)
-    alert(pageNumber);
-  };
+
   return (
     <div>
       <table className="table table-hover">

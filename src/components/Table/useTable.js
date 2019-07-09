@@ -22,12 +22,15 @@ const useTable = (callback) => {
     };
     fetchPosts();
   }, []);
-
+  const paginatePosts = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   return {
     posts,
     currentPage,
     postsPerPage,
     currentPosts,
+    paginatePosts,
   };
 };
 export default useTable;
