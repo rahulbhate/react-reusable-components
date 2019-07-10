@@ -28,21 +28,30 @@ const Table = (props) => {
       );
     });
   }
+  function sortBy(key) {
+    alert(key);
+  }
   function getKeys() {
     return Object.keys(posts[0]);
   }
   function getHeader() {
     var keys = getKeys();
     return keys.map((key, index) => {
-      return <th key={key}>{key.toUpperCase()}</th>;
+      return (
+        <th key={key} onClick={() => sortBy(key)}>
+          {key.toUpperCase()}
+        </th>
+      );
     }); /// Prints all Keys...
   }
 
   return (
     <div>
-      <table className="table table-hover">
-        <tr>{getHeader()}</tr>
-        <tbody>{getRowsData()}</tbody>
+      <table className="table table-bordered">
+        <tbody>
+          <tr>{getHeader()}</tr>
+          {getRowsData()}
+        </tbody>
       </table>
       <Pagination
         postsPerPage={postsPerPage}
