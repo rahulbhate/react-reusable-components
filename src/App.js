@@ -10,8 +10,30 @@ import WrappedMap from '../src/components/WrappedMap/WrappedMap';
 import Calendar from '../src/components/Calendar/Calendar';
 import Navigation from '../src/components/Navigation/Navigation';
 import Table from '../src/components/Table/Table';
+import Tabs from '../src/components/Tabs/Tabs';
+import ProfileCard from '../src/components/ProfileCard/ProfileCard';
 
 function App() {
+  const options = [
+    {
+      title: 'title 1',
+      description: 'description 1',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+    },
+    {
+      title: 'title 2',
+      description: 'description 2',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+    },
+    {
+      title: 'title 3',
+      description: 'description 3',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+    },
+  ];
   return (
     <div className="container-fluid">
       {/* 
@@ -92,6 +114,19 @@ function App() {
             ARSN 158 861 155 and the holder of AFS Licence number 240975.
           </p>
           <Table />
+          <Tabs>
+            <div label="Home">
+              See ya later, <em>Alligator</em>!
+            </div>
+            <div label="About">
+              After &apos;while, <em>Crocodile</em>!
+            </div>
+            <div label="Free Trial">
+              Nothing to see here, this tab is <em>extinct</em>!
+            </div>
+            <div label="Login">Login to the system</div>
+          </Tabs>
+          <ProfileCard options={options} />
         </div>
       </div>
     </div>

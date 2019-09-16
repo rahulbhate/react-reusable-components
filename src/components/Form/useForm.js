@@ -17,7 +17,13 @@ const useForm = (callback) => {
     'Testing',
   ]);
   const handleSubmit = (event) => {
+    // Call SERVER USING FETCH METHOD and PASS STATE VALUES TO BACK END WITH POST METHOD..
     if (event) event.preventDefault();
+    alert('your form is submitted');
+    console.log(' ******************');
+    console.log(values);
+    console.log('******************');
+    event.target.value = '';
     callback();
   };
 

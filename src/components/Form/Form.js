@@ -20,6 +20,7 @@ const Form = () => {
 
   function login() {
     console.log(values);
+    alert('Called Login');
   }
 
   return (
