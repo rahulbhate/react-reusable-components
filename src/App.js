@@ -12,28 +12,51 @@ import Navigation from '../src/components/Navigation/Navigation';
 import Table from '../src/components/Table/Table';
 import Tabs from '../src/components/Tabs/Tabs';
 import ProfileCard from '../src/components/ProfileCard/ProfileCard';
+import ImageSlider from '../src/components/ImageSlider/ImageSlider';
+/*function iterate(obj) {
+  console.log('iterate method called');
+  Object.keys(obj).forEach((key) => {
+    console.log('key: ' + key + ', value: ' + obj[key]);
 
+    if (typeof obj[key] === 'object') {
+      iterate(obj[key]);
+    }
+  });
+}*/
 function App() {
-  const options = [
+  const photos = [
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider1-e1508238353660.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider2.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+  ];
+  const data = [
     {
       title: 'title 1',
       description: 'description 1',
       imageSrc:
-        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider1-e1508238353660.jpg',
     },
     {
       title: 'title 2',
       description: 'description 2',
       imageSrc:
-        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider2.jpg',
     },
     {
       title: 'title 3',
       description: 'description 3',
       imageSrc:
-        'https://www.asreducation.com.au/wp-content/uploads/2017/10/ASR3-870x440.jpg',
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+    },
+    {
+      title: 'title 4',
+      description: 'description 4',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider3.jpg',
     },
   ];
+  //iterate(data);
   return (
     <div className="container-fluid">
       {/* 
@@ -47,6 +70,7 @@ function App() {
       </div>
      */}
       <div>
+        <ImageSlider options={data} />
         <Accordian label="Offer Documents" data={data}>
           <div>
             <p>
@@ -126,7 +150,7 @@ function App() {
             </div>
             <div label="Login">Login to the system</div>
           </Tabs>
-          <ProfileCard options={options} />
+          <ProfileCard options={photos} />
         </div>
       </div>
     </div>
