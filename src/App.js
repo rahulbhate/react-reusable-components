@@ -12,8 +12,53 @@ import WrappedMap from '../src/components/WrappedMap/WrappedMap';
 import Calendar from '../src/components/Calendar/Calendar';
 import Navigation from '../src/components/Navigation/Navigation';
 import Table from '../src/components/Table/Table';
+import Tabs from '../src/components/Tabs/Tabs';
+import ProfileCard from '../src/components/ProfileCard/ProfileCard';
+import ImageSlider from '../src/components/ImageSlider/ImageSlider';
+/*function iterate(obj) {
+  console.log('iterate method called');
+  Object.keys(obj).forEach((key) => {
+    console.log('key: ' + key + ', value: ' + obj[key]);
 
+    if (typeof obj[key] === 'object') {
+      iterate(obj[key]);
+    }
+  });
+}*/
 function App() {
+  const photos = [
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider1-e1508238353660.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider2.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+    'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+  ];
+  const data = [
+    {
+      title: 'title 1',
+      description: 'description 1',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider1-e1508238353660.jpg',
+    },
+    {
+      title: 'title 2',
+      description: 'description 2',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider2.jpg',
+    },
+    {
+      title: 'title 3',
+      description: 'description 3',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider4.jpg',
+    },
+    {
+      title: 'title 4',
+      description: 'description 4',
+      imageSrc:
+        'https://www.asreducation.com.au/wp-content/uploads/2017/10/Slider3.jpg',
+    },
+  ];
+  //iterate(data);
   return (
     <div className="container-fluid">
       {/* 
@@ -27,10 +72,14 @@ function App() {
       </div>
      */}
       <div>
+<<<<<<< HEAD
       <div className="col-6 justify-content-center my-5">
            <div><List /></div>
             
           </div>
+=======
+        <ImageSlider options={data} />
+>>>>>>> ac55fc605cd8cf426b1e7620a18792875484bd4d
         <Accordian label="Offer Documents" data={data}>
           <div>
             <p>
@@ -98,7 +147,23 @@ function App() {
             ARSN 158 861 155 and the holder of AFS Licence number 240975.
           </p>
           <Table />
+<<<<<<< HEAD
           <ProgressBar percentage={50} width={150}/>
+=======
+          <Tabs>
+            <div label="Home">
+              See ya later, <em>Alligator</em>!
+            </div>
+            <div label="About">
+              After &apos;while, <em>Crocodile</em>!
+            </div>
+            <div label="Free Trial">
+              Nothing to see here, this tab is <em>extinct</em>!
+            </div>
+            <div label="Login">Login to the system</div>
+          </Tabs>
+          <ProfileCard options={photos} />
+>>>>>>> ac55fc605cd8cf426b1e7620a18792875484bd4d
         </div>
       </div>
     </div>
