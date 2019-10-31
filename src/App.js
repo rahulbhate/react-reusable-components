@@ -5,7 +5,9 @@ import data from '../src/data/data';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import Form from './components/Form/Form';
+import ProgressBar from './components/ProgressBar/ProgressBar';
 import ScrollToTop from '../src/components/ScrollToTop/ScrollToTop';
+import List from '../src/components/InfiniteScroll/List';
 import WrappedMap from '../src/components/WrappedMap/WrappedMap';
 import Calendar from '../src/components/Calendar/Calendar';
 import Navigation from '../src/components/Navigation/Navigation';
@@ -25,6 +27,10 @@ function App() {
       </div>
      */}
       <div>
+      <div className="col-6 justify-content-center my-5">
+           <div><List /></div>
+            
+          </div>
         <Accordian label="Offer Documents" data={data}>
           <div>
             <p>
@@ -92,6 +98,7 @@ function App() {
             ARSN 158 861 155 and the holder of AFS Licence number 240975.
           </p>
           <Table />
+          <ProgressBar percentage={50} width={150}/>
         </div>
       </div>
     </div>
