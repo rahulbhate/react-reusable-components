@@ -2,6 +2,7 @@ import React from 'react';
 import './css/bootstrap.min.css';
 import './css/style.css';
 import data from '../src/data/data';
+import Label from '../src/components/Label/Label';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import Form from './components/Form/Form';
@@ -72,14 +73,7 @@ function App() {
       </div>
      */}
       <div>
-<<<<<<< HEAD
-      <div className="col-6 justify-content-center my-5">
-           <div><List /></div>
-            
-          </div>
-=======
         <ImageSlider options={data} />
->>>>>>> ac55fc605cd8cf426b1e7620a18792875484bd4d
         <Accordian label="Offer Documents" data={data}>
           <div>
             <p>
@@ -147,23 +141,12 @@ function App() {
             ARSN 158 861 155 and the holder of AFS Licence number 240975.
           </p>
           <Table />
-<<<<<<< HEAD
+          <h4>Progress Bar Component</h4>
           <ProgressBar percentage={50} width={150}/>
-=======
-          <Tabs>
-            <div label="Home">
-              See ya later, <em>Alligator</em>!
-            </div>
-            <div label="About">
-              After &apos;while, <em>Crocodile</em>!
-            </div>
-            <div label="Free Trial">
-              Nothing to see here, this tab is <em>extinct</em>!
-            </div>
-            <div label="Login">Login to the system</div>
-          </Tabs>
-          <ProfileCard options={photos} />
->>>>>>> ac55fc605cd8cf426b1e7620a18792875484bd4d
+          <p>This is label Component</p>
+          <Label htmlFor="firstname" label="FirstName" required />
+          <Label htmlFor="lastName" label="LastName" required />
+          <Label htmlFor="email" label="Email" required />
         </div>
       </div>
     </div>
