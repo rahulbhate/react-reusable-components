@@ -3,6 +3,7 @@ import './css/bootstrap.min.css';
 import './css/style.css';
 import data from '../src/data/data';
 import Label from '../src/components/Label/Label';
+import TextInput from '../src/components/TextInput/TextInput';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Accordian from '../src/components/Accordian/Accordian';
 import Form from './components/Form/Form';
@@ -147,6 +148,9 @@ function App() {
           <Label htmlFor="firstname" label="FirstName" required />
           <Label htmlFor="lastName" label="LastName" required />
           <Label htmlFor="email" label="Email" required />
+          <h3>Text Input Component</h3>
+          <TextInput htmlId="example-optional" label="First Name" name="firstname" 
+          onChange={()=>{}} required error="First Name is Required"/>
         </div>
       </div>
     </div>
